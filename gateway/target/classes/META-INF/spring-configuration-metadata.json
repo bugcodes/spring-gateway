@@ -1,0 +1,17 @@
+{
+  "groups": [
+    {
+      "name": "secure.ignore",
+      "type": "com.bugcoder.config.IgnoreUrlsConfig",
+      "sourceType": "com.bugcoder.config.IgnoreUrlsConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "secure.ignore.urls",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "com.bugcoder.config.IgnoreUrlsConfig"
+    }
+  ],
+  "hints": []
+}

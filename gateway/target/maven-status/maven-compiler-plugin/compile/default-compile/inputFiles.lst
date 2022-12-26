@@ -1,0 +1,12 @@
+/Users/zbj/Documents/ZhugeioProjects/spring-gateway-20221219/gateway/src/main/java/com/bugcoder/config/RedisRepositoryConfig.java
+/Users/zbj/Documents/ZhugeioProjects/spring-gateway-20221219/gateway/src/main/java/com/bugcoder/config/ResourceServerConfig.java
+/Users/zbj/Documents/ZhugeioProjects/spring-gateway-20221219/gateway/src/main/java/com/bugcoder/component/RestfulAccessDeniedHandler.java
+/Users/zbj/Documents/ZhugeioProjects/spring-gateway-20221219/gateway/src/main/java/com/bugcoder/component/RestAuthenticationEntryPoint.java
+/Users/zbj/Documents/ZhugeioProjects/spring-gateway-20221219/gateway/src/main/java/com/bugcoder/filter/IgnoreUrlsRemoveJwtFilter.java
+/Users/zbj/Documents/ZhugeioProjects/spring-gateway-20221219/gateway/src/main/java/com/bugcoder/api/ResultCode.java
+/Users/zbj/Documents/ZhugeioProjects/spring-gateway-20221219/gateway/src/main/java/com/bugcoder/GatewayApplication.java
+/Users/zbj/Documents/ZhugeioProjects/spring-gateway-20221219/gateway/src/main/java/com/bugcoder/config/IgnoreUrlsConfig.java
+/Users/zbj/Documents/ZhugeioProjects/spring-gateway-20221219/gateway/src/main/java/com/bugcoder/filter/AuthGlobalFilter.java
+/Users/zbj/Documents/ZhugeioProjects/spring-gateway-20221219/gateway/src/main/java/com/bugcoder/component/AuthorizationManager.java
+/Users/zbj/Documents/ZhugeioProjects/spring-gateway-20221219/gateway/src/main/java/com/bugcoder/api/CommonResult.java
+/Users/zbj/Documents/ZhugeioProjects/spring-gateway-20221219/gateway/src/main/java/com/bugcoder/package-info.java

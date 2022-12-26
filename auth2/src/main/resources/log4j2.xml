@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <properties>
+        <property name="LOG_HOME">./logs</property>
+    </properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+<!--            <PatternLayout-->
+<!--                    pattern="[traceID:%X{traceID}] %style{%d{ISO8601}}{black} %highlight{%-5level }[%style{%t}{bright,blue}][location=%F:%L] [method=%M][user=%X{user_id}] [local_ip=%X{local_ip}] [client_ip=%X{client_ip}] [request_uri=%X{request_uri}] %style{%C{1.}}{bright,yellow}: %msg%n%throwable" />-->
+            <PatternLayout
+                    pattern="[%-d{yyyy-MM-dd HH:mm:ss}] [%style{%p}{bright,yellow}] [%style{%t}{bright,blue}] [%l] [traceID:%X{traceID}] [user=%X{user_id}] [local_ip=%X{local_ip}] [client_ip=%X{client_ip}] [request_uri=%X{request_uri}] -%msg%n%throwable" />
+
+        </Console>
+        <RollingFile name="RollingFile"
+                     fileName="${LOG_HOME}/spring-boot-logger-log4j2.log"
+                     filePattern="${LOG_HOME}/$${date:yyyy-MM}/spring-boot-logger-log4j2-%d{-dd-MMMM-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <pattern>[%-d{yyyy-MM-dd HH:mm:ss}] [%p] [%t] [%l] -[traceID:%X{traceID}] [user=%X{user_id}] [local_ip=%X{local_ip}] [client_ip=%X{client_ip}] [request_uri=%X{request_uri}] -%msg%n%throwable</pattern>
+            </PatternLayout>
+            <Policies>
+                <!-- rollover on startup, daily and when the file reaches
+                    10 MegaBytes -->
+                <OnStartupTriggeringPolicy />
+                <SizeBasedTriggeringPolicy
+                        size="50 MB" />
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+        </RollingFile>
+
+        <!--info级别日志-->
+        <RollingFile name="InfoFileAppender"
+                     fileName="${LOG_HOME}/info.log"
+                     filePattern="${LOG_HOME}/$${date:yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log.gz">
+            <Filters>
+                <!--过滤掉warn及更高级别日志-->
+                <ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL"/>
+            </Filters>
+            <!--设置日志格式-->
+            <PatternLayout>
+                <pattern>[%-d{yyyy-MM-dd HH:mm:ss}] [%p] [%t] [%l] -[traceID:%X{traceID}] [user=%X{user_id}] [local_ip=%X{local_ip}] [client_ip=%X{client_ip}] [request_uri=%X{request_uri}] -%msg%n%throwable</pattern>
+            </PatternLayout>
+            <Policies>
+                <!-- rollover on startup, daily and when the file reaches
+                    10 MegaBytes -->
+                <OnStartupTriggeringPolicy />
+                <SizeBasedTriggeringPolicy
+                        size="50 MB" />
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+            <!--设置日志的文件个数上限，不设置默认为7个，超过大小后会被覆盖；依赖于filePattern中的%i-->
+            <DefaultRolloverStrategy max="100"/>
+        </RollingFile>
+
+        <!--warn级别日志-->
+        <RollingFile name="WarnFileAppender"
+                     fileName="${LOG_HOME}/warn.log"
+                     filePattern="${LOG_HOME}/$${date:yyyy-MM}/warn-%d{yyyy-MM-dd}-%i.log.gz">
+            <Filters>
+                <!--过滤掉error及更高级别日志-->
+                <ThresholdFilter level="error" onMatch="DENY" onMismatch="NEUTRAL"/>
+            </Filters>
+            <!--设置日志格式-->
+            <PatternLayout>
+                <pattern>[%-d{yyyy-MM-dd HH:mm:ss}] [%p] [%t] [%l] -[traceID:%X{traceID}] [user=%X{user_id}] [local_ip=%X{local_ip}] [client_ip=%X{client_ip}] [request_uri=%X{request_uri}] -%msg%n%throwable</pattern>
+            </PatternLayout>
+            <Policies>
+                <!-- 设置日志文件切分参数 -->
+                <!--<OnStartupTriggeringPolicy/>-->
+                <!--设置日志基础文件大小，超过该大小就触发日志文件滚动更新-->
+                <SizeBasedTriggeringPolicy size="50 MB"/>
+                <!--设置日志文件滚动更新的时间，依赖于文件命名filePattern的设置-->
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+            <!--设置日志的文件个数上限，不设置默认为7个，超过大小后会被覆盖；依赖于filePattern中的%i-->
+            <DefaultRolloverStrategy max="100"/>
+        </RollingFile>
+
+        <!--error及更高级别日志-->
+        <RollingFile name="ErrorFileAppender"
+                     fileName="${LOG_HOME}/error.log"
+                     filePattern="${LOG_HOME}/$${date:yyyy-MM}/error-%d{yyyy-MM-dd}-%i.log.gz">
+            <!--设置日志格式-->
+            <PatternLayout>
+                <pattern>[%-d{yyyy-MM-dd HH:mm:ss}] [%p] [%t] [%l] -[traceID:%X{traceID}] [user=%X{user_id}] [local_ip=%X{local_ip}] [client_ip=%X{client_ip}] [request_uri=%X{request_uri}] -%msg%n%throwable</pattern>
+            </PatternLayout>
+            <Policies>
+                <!-- 设置日志文件切分参数 -->
+                <!--<OnStartupTriggeringPolicy/>-->
+                <!--设置日志基础文件大小，超过该大小就触发日志文件滚动更新-->
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+                <!--设置日志文件滚动更新的时间，依赖于文件命名filePattern的设置-->
+                <TimeBasedTriggeringPolicy/>
+            </Policies>
+            <!--设置日志的文件个数上限，不设置默认为7个，超过大小后会被覆盖；依赖于filePattern中的%i-->
+            <DefaultRolloverStrategy max="100"/>
+        </RollingFile>
+
+    </Appenders>
+
+    <Loggers>
+        <!-- LOG everything at INFO level -->
+        <Root level="info">
+            <AppenderRef ref="Console" />
+            <AppenderRef ref="RollingFile" />
+            <AppenderRef ref="InfoFileAppender" />
+            <AppenderRef ref="WarnFileAppender" />
+            <AppenderRef ref="ErrorFileAppender" />
+        </Root>
+
+        <Logger name="com.bugcoder" level="debug"/>
+        <!--spring日志-->
+        <Logger name="org.springframework" level="info"/>
+        <!-- mybatis日志 -->
+        <Logger name="com.mybatis" level="debug"/>
+        <Logger name="com.baomidou" level="debug"/>
+        <Logger name="com.zaxxer.hikari" level="debug"/>
+    </Loggers>
+
+</Configuration>

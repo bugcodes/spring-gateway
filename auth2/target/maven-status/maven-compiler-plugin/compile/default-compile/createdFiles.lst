@@ -1,0 +1,17 @@
+com/bugcoder/constant/MessageConstant.class
+com/bugcoder/controller/AuthController.class
+com/bugcoder/component/JwtTokenEnhancer.class
+com/bugcoder/service/ResourceService.class
+com/bugcoder/config/RedisRepositoryConfig.class
+com/bugcoder/domain/TokenDTO.class
+com/bugcoder/config/Oauth2ServerConfig.class
+com/bugcoder/AuthApplication.class
+com/bugcoder/api/CommonResult.class
+com/bugcoder/api/ResultCode.class
+com/bugcoder/service/SecurityUser.class
+com/bugcoder/service/UserServiceImpl.class
+com/bugcoder/component/WebSecurityConfig.class
+com/bugcoder/domain/UserDTO.class
+com/bugcoder/domain/TokenDTO$TokenDTOBuilder.class
+com/bugcoder/handler/ExceptionHandler.class
+com/bugcoder/controller/KeyPairController.class
